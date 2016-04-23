@@ -2,23 +2,26 @@
   "name": "aku",
   "description": "Guardian Spirit. It Interceps a function and exec a handler based on the result.",
   "homepage": "https://github.com/Kikobeats/aku",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "./index.js",
   "author": {
-    "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/aku",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/aku.git"
+  },
   "bugs": {
     "url": "https://github.com/Kikobeats/aku/issues"
   },
   "keywords": [
     "aku",
     "aku-aku",
+    "handler",
     "interceps",
-    "proxy",
-    "handler"
+    "proxy"
   ],
   "dependencies": {
     "async": "~2.0.0-rc.3"
