@@ -1,0 +1,42 @@
+{
+  "name": "aku",
+  "description": "Guardian Spirit. It Interceps a function and exec a handler based on the result.",
+  "homepage": "https://github.com/Kikobeats/aku",
+  "version": "0.0.0",
+  "main": "./index.js",
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://github.com/Kikobeats"
+  },
+  "repository": "Kikobeats/aku",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/aku/issues"
+  },
+  "keywords": [
+    "aku",
+    "aku-aku",
+    "interceps",
+    "proxy",
+    "handler"
+  ],
+  "dependencies": {
+    "async": "~2.0.0-rc.3"
+  },
+  "devDependencies": {
+    "git-dirty": "latest",
+    "mocha": "latest",
+    "should": "latest",
+    "standard": "latest"
+  },
+  "engines": {
+    "node": "> 0.10"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "lint": "standard lib",
+    "pretest": "npm run lint",
+    "test": "mocha"
+  },
+  "license": "MIT"
+}
