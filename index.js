@@ -1,30 +1,58 @@
 'use strict'
 
 var asyncify = require('async/asyncify')
-var apply = require('async/apply')
+var sliced = require('sliced')
 
-function aku (fn, handler, errHandler) {
-  fn = asyncify(fn)
+var createProxy = {
+  sync: function (fn, handler, errHandler) {
+    var wrapFn = asyncify(fn)
 
-  function proxy (cb) {
-    apply(fn, arguments)(function (err) {
-      if (err) {
-        if (cb) {
-          if (errHandler) errHandler(err)
-          return cb(err)
+    function proxy () {
+      var proxyArgs = sliced(arguments)
+
+      function invoke () {
+        var args = sliced(arguments)
+        var err = args.shift()
+
+        if (err) {
+          if (errHandler) {
+            errHandler(err)
+            throw err
+          }
         }
 
-        if (errHandler) {
-          errHandler(err)
-          throw err
-        }
+        handler.apply(handler, args)
       }
-      handler.apply(handler, arguments)
-      if (cb) return cb(null, arguments)
-    })
-  }
 
-  return proxy
+      proxyArgs.push(invoke)
+      wrapFn.apply(wrapFn, proxyArgs)
+    }
+    return proxy
+  },
+
+  async: function (fn, handler, errHandler) {
+    function proxy () {
+      var proxyArgs = sliced(arguments)
+      var cb = proxyArgs.pop()
+
+      function invoke () {
+        var args = sliced(arguments)
+        // args[0] is callback err
+        if (args[0]) {
+          if (errHandler) errHandler(args[0])
+        } else {
+          handler.apply(handler, args.slice(1, args.length))
+        }
+        return cb.apply(cb, args)
+      }
+
+      proxyArgs.push(invoke)
+      fn.apply(fn, proxyArgs)
+    }
+
+    return proxy
+  }
 }
 
-module.exports = aku
+module.exports = createProxy.async
+module.exports.sync = createProxy.sync

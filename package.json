@@ -24,7 +24,8 @@
     "proxy"
   ],
   "dependencies": {
-    "async": "~2.0.0-rc.3"
+    "async": "~2.0.0-rc.3",
+    "sliced": "~1.0.1"
   },
   "devDependencies": {
     "git-dirty": "latest",

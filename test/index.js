@@ -9,8 +9,11 @@ function noop () {
   console.log('noop invoked')
 }
 
-function asyncNoop () {
-  console.log('asyncNoop invoked')
+function asyncNoop (fakeArgument, cb) {
+  process.nextTick(function () {
+    console.log('asyncNoop invoked')
+    return cb(null, fakeArgument)
+  })
 }
 
 function exception () {
@@ -24,8 +27,14 @@ function asyncException (cb) {
 }
 
 var count = 0
-function incrementCounter () { ++count }
-function decrementCounter () { --count }
+function incrementCounter () {
+  console.log('incrementCounter')
+  ++count
+}
+function decrementCounter () {
+  console.log('decrementCounter')
+  --count
+}
 
 describe('aku', function () {
   beforeEach(function () {
@@ -34,13 +43,13 @@ describe('aku', function () {
 
   describe('sync', function () {
     it('invoke handler', function () {
-      var fn = aku(noop, incrementCounter)
+      var fn = aku.sync(noop, incrementCounter)
       fn()
       count.should.be.equal(1)
     })
 
     it('invoke error handler', function () {
-      var fn = aku(exception, incrementCounter, decrementCounter)
+      var fn = aku.sync(exception, incrementCounter, decrementCounter)
       ;(function () { fn() }).should.throw()
       count.should.be.equal(-1)
     })
@@ -49,7 +58,7 @@ describe('aku', function () {
   describe('async', function () {
     it('invoke handler', function (done) {
       var fn = aku(asyncNoop, incrementCounter)
-      fn(function (err) {
+      fn('fake', function (err) {
         count.should.be.equal(1)
         done(err)
       })

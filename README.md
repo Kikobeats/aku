@@ -27,28 +27,37 @@ $ npm install aku --save
 
 ## API
 
-### aku(fn, handler, [errHandler])
+We distinguish between sync or async methods:
+
+  * **aku(fn, handler, [errHandler])**
+  * **aku.sync(fn, handler, [errHandler])**
+
+As you can see the library expose the async method by default.
 
 #### fn
 
 *Required*<br>
 Type: `function`
 
-Input function to be handled
+Input sync/async function to be handled.
 
 #### handler
 
 *Required*<br>
 Type: `function`
 
-Handle to launch under non error.
+Handle that will be hooked under non error result.
 
-#### fn
+#### errHandler
 
 Type: `function`<br>
 Defaults: `noop`
 
-Handle to launch under error.
+Handle that will be hooked under error result.
+
+As you can see it is an optional handled.
+
+If you provided a sync method, then it throws an error after `errHandler` execution.
 
 ## License
 
