@@ -2,7 +2,7 @@
   "name": "aku",
   "description": "Guardian Spirit. It Interceps a function and exec a handler based on the result.",
   "homepage": "https://github.com/Kikobeats/aku",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./index.js",
   "author": {
     "name": "Kiko Beats",
