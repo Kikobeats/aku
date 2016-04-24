@@ -1,3 +1,10 @@
+<a name="1.0.1"></a>
+## 1.0.1 (2016-04-24)
+
+* Update interface ([7742e25](https://github.com/kikobeats/aku/commit/7742e25))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2016-04-23)
 
