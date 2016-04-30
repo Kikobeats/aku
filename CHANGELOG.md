@@ -1,3 +1,10 @@
+<a name="1.0.3"></a>
+## 1.0.3 (2016-04-30)
+
+* Setup correctly node version ([9f6ea05](https://github.com/kikobeats/aku/commit/9f6ea05))
+
+
+
 <a name="1.0.2"></a>
 ## 1.0.2 (2016-04-24)
 
