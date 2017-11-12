@@ -1,7 +1,5 @@
 # aku
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Kikobeats/aku.svg)](https://greenkeeper.io/)
-
 <p align="center">
   <br>
   <img src="logo.png" alt="aku">
