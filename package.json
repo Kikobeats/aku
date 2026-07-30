@@ -1,6 +1,6 @@
 {
   "name": "aku",
-  "description": "Guardian Spirit. It Interceps a function and exec a handler based on the result.",
+  "description": "Intercept a function call and run success or error handlers based on the result — guardian proxy.",
   "homepage": "https://github.com/Kikobeats/aku",
   "version": "1.0.3",
   "main": "./index.js",
@@ -17,11 +17,16 @@
     "url": "https://github.com/Kikobeats/aku/issues"
   },
   "keywords": [
-    "aku",
-    "aku-aku",
+    "proxy",
+    "intercept",
     "handler",
-    "interceps",
-    "proxy"
+    "wrapper",
+    "hook",
+    "guard",
+    "middleware",
+    "function",
+    "result",
+    "aku"
   ],
   "dependencies": {
     "sliced": "~1.0.1"
